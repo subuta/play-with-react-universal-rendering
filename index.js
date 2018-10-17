@@ -1,4 +1,6 @@
-if (process.env.NODE_ENV === 'development') {
+const dev = process.env.NODE_ENV !== 'production'
+
+if (dev) {
   // Entry point for enabling babel-register while development.
   require('@babel/register')
   require('@babel/polyfill')
