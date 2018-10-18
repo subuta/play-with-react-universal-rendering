@@ -1,11 +1,10 @@
-import '@babel/register'
-import '@babel/polyfill'
-
 import React from 'react'
 import {
   renderToString,
   renderToStaticMarkup
 } from 'react-dom/server'
+import { Helmet } from 'react-helmet'
+
 import path from 'path'
 
 import Koa from 'koa'
@@ -26,10 +25,21 @@ app.use(ctx => {
     <App />
   )
 
+  const helmet = Helmet.renderStatic()
+
+  const head = (
+    <>
+      {helmet.title.toComponent()}
+      {helmet.meta.toComponent()}
+    </>
+  )
+
   // Render as index.html(with Server-side rendered app)
   ctx.body = renderToStaticMarkup(
     <Document
+      head={head}
       main={<div id='app' dangerouslySetInnerHTML={{ __html: app }} />}
+
     />
   )
 })
