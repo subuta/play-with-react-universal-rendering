@@ -25,21 +25,19 @@ app.use(ctx => {
     <App />
   )
 
-  const helmet = Helmet.renderStatic()
-
-  const head = (
-    <>
-      {helmet.title.toComponent()}
-      {helmet.meta.toComponent()}
-    </>
-  )
+  // const helmet = Helmet.renderStatic()
+  //
+  // const head = (
+  //   <>
+  //     {helmet.title.toComponent()}
+  //     {helmet.meta.toComponent()}
+  //   </>
+  // )
 
   // Render as index.html(with Server-side rendered app)
   ctx.body = renderToStaticMarkup(
     <Document
-      head={head}
       main={<div id='app' dangerouslySetInnerHTML={{ __html: app }} />}
-
     />
   )
 })
