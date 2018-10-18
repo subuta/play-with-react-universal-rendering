@@ -22,3 +22,13 @@ npm run build
 # Server production server
 npm run servep
 ```
+
+### How to test
+
+```
+# Facebook Share debugger
+https://developers.facebook.com/tools/debug/sharing
+
+# Twitter Card validator
+https://cards-dev.twitter.com/validator
+```
